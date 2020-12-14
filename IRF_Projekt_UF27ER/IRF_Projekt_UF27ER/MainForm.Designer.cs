@@ -1,6 +1,6 @@
 ﻿namespace IRF_Projekt_UF27ER
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
