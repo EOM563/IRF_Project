@@ -90,7 +90,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>bolt_dataDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Entities\AlKatButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Entities\aruk.cs" />
+    <Compile Include="Entities\KatButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     <Compile Include="Raktar.cs">
       <DependentUpon>BoltDataModel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

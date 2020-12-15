@@ -41,5 +41,10 @@ namespace IRF_Projekt_UF27ER
                 keszlet_lista.Add(keszlet_sor);
             }
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
