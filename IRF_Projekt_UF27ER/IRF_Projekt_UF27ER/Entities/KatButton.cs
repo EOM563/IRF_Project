@@ -11,7 +11,7 @@ namespace IRF_Projekt_UF27ER.Entities
     class KatButton : Button
     {
         private string _betuSzin;
-        private bool _katActive;
+        private bool _katActive = false;
         public string Kat { get; set; }
 
         public string BetuSzin
@@ -27,12 +27,12 @@ namespace IRF_Projekt_UF27ER.Entities
                 else if (value == "Bögre")
                 {
                     ForeColor = Color.FromArgb(0,0,102);
-                    _betuSzin = "0,0,10";
+                    _betuSzin = "0,0,102";
                 }
                 else if (value == "Képeslap")
                 {
-                    ForeColor = Color.FromArgb(0,51,0);
-                    _betuSzin = "0,51,0";
+                    ForeColor = Color.FromArgb(102,0,0);
+                    _betuSzin = "102,0,0";
                 }
                 else
                 {
@@ -44,7 +44,6 @@ namespace IRF_Projekt_UF27ER.Entities
                     _betuSzin = r.ToString() + "," + g.ToString() + "," + b.ToString();
                 }
             }
-
         }
 
         public bool katActive
@@ -55,12 +54,18 @@ namespace IRF_Projekt_UF27ER.Entities
                 _katActive = value;
                 if (_katActive == true)
                 {
-                    Font = new Font(FontFamily.GenericSansSerif, 8, FontStyle.Bold);
+                    Font = new Font(FontFamily.GenericSansSerif, 10, FontStyle.Bold);
+                    FlatStyle = FlatStyle.Flat;
+                    FlatAppearance.BorderColor = Color.Black;
+                    FlatAppearance.BorderSize = 2;
                     BackColor = SystemColors.ControlDark;
                 }
                 else
                 {
-                    Font = new Font(FontFamily.GenericSansSerif, 8, FontStyle.Regular);
+                    Font = new Font(FontFamily.GenericSansSerif, 10, FontStyle.Regular);
+                    FlatStyle = FlatStyle.Flat;
+                    FlatAppearance.BorderColor = SystemColors.AppWorkspace;
+                    FlatAppearance.BorderSize = 2;
                     BackColor = SystemColors.Control;
                 }
             }
@@ -70,7 +75,7 @@ namespace IRF_Projekt_UF27ER.Entities
         {
             Height = 100;
             Width = 130;
-            Font = new Font(FontFamily.GenericSansSerif, 10, FontStyle.Bold);
+            //Font = new Font(FontFamily.GenericSansSerif, 10, FontStyle.Bold);
             Location = new Point(3, 3);
             MouseDown += KatButton_MouseDown;
         }

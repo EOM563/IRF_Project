@@ -63,6 +63,7 @@
             // 
             // katUserControl1
             // 
+            this.katUserControl1.AutoScroll = true;
             this.katUserControl1.Location = new System.Drawing.Point(12, 8);
             this.katUserControl1.Name = "katUserControl1";
             this.katUserControl1.Size = new System.Drawing.Size(857, 105);
