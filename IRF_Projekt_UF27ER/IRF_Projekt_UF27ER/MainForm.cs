@@ -15,11 +15,16 @@ namespace IRF_Projekt_UF27ER
     {
         bolt_dataEntities context = new bolt_dataEntities();       
         List<aruk> keszlet_lista = new List<aruk>();
+        List<string> osszesKat = new List<string>();
+
+        List<KatUserControl> KUC_lista = new List<KatUserControl>();
+
         public MainForm()
         {
             InitializeComponent();
 
             data_download();
+            KUCgeneralas();
         }
 
         private void data_download()
@@ -35,10 +40,30 @@ namespace IRF_Projekt_UF27ER
                 keszlet_sor.Termek = i.Termek.ToString();
                 keszlet_sor.Keszlet_db = Convert.ToInt32(i.keszlet_db);
                 keszlet_sor.Egysegar_ft = Convert.ToInt32(i.Egysegar_ft);
-                keszlet_sor.Kategoria = i.Kategoria.ToString();
+                keszlet_sor.Kategoria = i.Kategoria.ToString();                
                 keszlet_sor.Marka = i.Marka.ToString();
                 keszlet_sor.Termek_nev = i.Termek_nev.ToString();
                 keszlet_lista.Add(keszlet_sor);
+
+                if (osszesKat.Contains(i.Kategoria.ToString()) == false)
+                {
+                    osszesKat.Add(i.Kategoria.ToString());
+                }
+            }
+        }
+
+        private void KUCgeneralas()
+        {
+            int x = 12;
+            int y = 8;
+            for (int i = 0; i < osszesKat.Count(); i++)
+            {                
+                KatUserControl ujKUC = new KatUserControl();
+                ujKUC.UCKKat = osszesKat[i];
+                ujKUC.PosX = x;
+                ujKUC.PosY = y;
+                Controls.Add(ujKUC);
+                y = y + 111;
             }
         }
 

@@ -31,7 +31,6 @@
             this.buttonFormNelkul = new System.Windows.Forms.Button();
             this.buttonFormazott = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
-            this.katUserControl1 = new IRF_Projekt_UF27ER.Entities.KatUserControl();
             this.SuspendLayout();
             // 
             // buttonFormNelkul
@@ -61,20 +60,11 @@
             this.buttonExit.Text = "Kilépés";
             this.buttonExit.UseVisualStyleBackColor = true;
             // 
-            // katUserControl1
-            // 
-            this.katUserControl1.AutoScroll = true;
-            this.katUserControl1.Location = new System.Drawing.Point(12, 8);
-            this.katUserControl1.Name = "katUserControl1";
-            this.katUserControl1.Size = new System.Drawing.Size(857, 105);
-            this.katUserControl1.TabIndex = 1;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1062, 618);
-            this.Controls.Add(this.katUserControl1);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonFormazott);
             this.Controls.Add(this.buttonFormNelkul);
@@ -90,7 +80,6 @@
         private System.Windows.Forms.Button buttonFormNelkul;
         private System.Windows.Forms.Button buttonFormazott;
         private System.Windows.Forms.Button buttonExit;
-        private Entities.KatUserControl katUserControl1;
     }
 }
 
