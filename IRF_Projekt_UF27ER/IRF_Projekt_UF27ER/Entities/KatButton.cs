@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using IRF_Projekt_UF27ER.Entities;
 
 namespace IRF_Projekt_UF27ER.Entities
 {
@@ -60,18 +61,17 @@ namespace IRF_Projekt_UF27ER.Entities
                 }
                 else
                 {
-                    NormatFormazas();
+                    NormalFormazas();
                 }
             }
         }
-
-        public KatButton()
+        public KatButton(List<Aru> keszlet_lista)
         {
             Height = 100;
             Width = 130;
             Text = Kat;
             Location = new Point(3, 3);
-            NormatFormazas();
+            NormalFormazas();
 
             MouseDown += KatButton_MouseDown;
         }   
@@ -88,7 +88,7 @@ namespace IRF_Projekt_UF27ER.Entities
             }
         }
 
-        private void NormatFormazas()
+        private void NormalFormazas()
         {
             Font = new Font(FontFamily.GenericSansSerif, 12, FontStyle.Bold);
             FlatStyle = FlatStyle.Flat;

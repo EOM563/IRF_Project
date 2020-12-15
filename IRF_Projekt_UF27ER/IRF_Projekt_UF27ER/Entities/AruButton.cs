@@ -5,23 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using IRF_Projekt_UF27ER.Entities;
 
 namespace IRF_Projekt_UF27ER.Entities
 {
-    public class AlKatButton : Button
+    public class AruButton : Button
     {
         //private string _hatterSzin;
-        private string _alKat;
-        private bool _alKatActive;
-
-        public string Kat { get; set; }
-        public string AlKat 
+        private string _marka;
+        private bool _aruActive;
+        public string Marka 
         {
-            get { return _alKat; }
+            get { return _marka; }
             set
             {
-                _alKat = value;
-                Text = _alKat;
+                _marka = value;
 
                 if (value == "Milka")
                 {
@@ -58,14 +56,13 @@ namespace IRF_Projekt_UF27ER.Entities
                 }
             }
         }
-        
-        public bool AlKatActive
+        public bool AruActive
         {
-            get { return _alKatActive; }
+            get { return _aruActive; }
             set
             {
-                _alKatActive = value;
-                if (_alKatActive == true)
+                _aruActive = value;
+                if (_aruActive == true)
                 {
                     Font = new Font(FontFamily.GenericSansSerif, 7, FontStyle.Bold);
                     FlatStyle = FlatStyle.Flat;
@@ -74,31 +71,38 @@ namespace IRF_Projekt_UF27ER.Entities
                 }
                 else
                 {
-                    Font = new Font(FontFamily.GenericSansSerif, 7, FontStyle.Regular);
-                    FlatStyle = FlatStyle.Flat;
-                    FlatAppearance.BorderColor = SystemColors.AppWorkspace;
-                    FlatAppearance.BorderSize = 1;
+                    NormalFormazas();
                 }
             }
         }
-        public AlKatButton()
+        public AruButton(Aru forrasAru)
         {
-            Height = 35;
+            Height = 38;
             Width = 175;
-            Location = new Point(3, 3);
+            Text = forrasAru.Marka + Environment.NewLine + forrasAru.Termek_nev;
+
+            NormalFormazas();
             MouseDown += KatButton_MouseDown;
         }
 
         private void KatButton_MouseDown(object sender, MouseEventArgs e)
         {
-            if (AlKatActive == true)
+            if (AruActive == true)
             {
-                AlKatActive = false;
+                AruActive = false;
             }
             else
             {
-                AlKatActive = true;
+                AruActive = true;
             }
+        }
+
+        private void NormalFormazas()
+        {
+            Font = new Font(FontFamily.GenericSansSerif, 7, FontStyle.Regular);
+            FlatStyle = FlatStyle.Flat;
+            FlatAppearance.BorderColor = SystemColors.AppWorkspace;
+            FlatAppearance.BorderSize = 1;
         }
 
         /*

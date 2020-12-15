@@ -90,10 +90,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>bolt_dataDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Entities\AlKatButton.cs">
+    <Compile Include="Entities\AruButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Entities\aruk.cs" />
+    <Compile Include="Entities\Aru.cs" />
     <Compile Include="Entities\KatButton.cs">
       <SubType>Component</SubType>
     </Compile>

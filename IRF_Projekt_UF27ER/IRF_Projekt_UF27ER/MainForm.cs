@@ -14,7 +14,7 @@ namespace IRF_Projekt_UF27ER
     public partial class MainForm : Form
     {
         bolt_dataEntities context = new bolt_dataEntities();       
-        List<aruk> keszlet_lista = new List<aruk>();
+        List<Aru> keszlet_lista = new List<Aru>();
         List<string> osszesKat = new List<string>();
 
         List<KatUserControl> KUC_lista = new List<KatUserControl>();
@@ -35,7 +35,7 @@ namespace IRF_Projekt_UF27ER
 
             foreach (var i in res)
             {
-                aruk keszlet_sor = new aruk();
+                Aru keszlet_sor = new Aru();
                 keszlet_sor.ID = Convert.ToInt32(i.ID);
                 keszlet_sor.Termek = i.Termek.ToString();
                 keszlet_sor.Keszlet_db = Convert.ToInt32(i.keszlet_db);
@@ -43,6 +43,7 @@ namespace IRF_Projekt_UF27ER
                 keszlet_sor.Kategoria = i.Kategoria.ToString();                
                 keszlet_sor.Marka = i.Marka.ToString();
                 keszlet_sor.Termek_nev = i.Termek_nev.ToString();
+                keszlet_sor.Kiirasra = false;
                 keszlet_lista.Add(keszlet_sor);
 
                 if (osszesKat.Contains(i.Kategoria.ToString()) == false)
@@ -59,11 +60,10 @@ namespace IRF_Projekt_UF27ER
             for (int i = 0; i < osszesKat.Count(); i++)
             {                
                 KatUserControl ujKUC = new KatUserControl(keszlet_lista);
-                ujKUC.UCKKat = osszesKat[i];
-                ujKUC.PosX = x;
-                ujKUC.PosY = y;
+                ujKUC.UCK_kat = osszesKat[i];
+                ujKUC.Location = new Point(x, y);
                 Controls.Add(ujKUC);
-                y = y + 111;
+                y = y + 125;
             }
         }
 

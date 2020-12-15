@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IRF_Projekt_UF27ER.Entities
 {
-    public class aruk
+    public class Aru
     {
         public int ID { get; set; }
         public string Termek { get; set; }
@@ -15,6 +15,6 @@ namespace IRF_Projekt_UF27ER.Entities
         public string Kategoria { get; set; }
         public string Marka { get; set; }
         public string Termek_nev { get; set; }
-
+        public bool Kiirasra { get; set; }
     }
 }
