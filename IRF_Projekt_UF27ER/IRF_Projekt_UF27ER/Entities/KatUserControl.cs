@@ -15,7 +15,7 @@ namespace IRF_Projekt_UF27ER.Entities
     {
         public string UCK_kat { get; set; }
 
-        List<AruButton> AlKatButton_lista = new List<AruButton>();
+        List<AruButton> aruButton_lista = new List<AruButton>();
         List<Aru> keszlet_lista;
       
         public KatUserControl(List<Aru> keszlet_lista)
@@ -28,7 +28,7 @@ namespace IRF_Projekt_UF27ER.Entities
         private void KatUserControl_Load(object sender, EventArgs e)
         {                      
             //Kategróia button
-            KatButton katButton = new KatButton(keszlet_lista);
+            KatButton katButton = new KatButton(keszlet_lista, aruButton_lista);
             katButton.Kat = UCK_kat;
             Controls.Add(katButton);
 
@@ -43,13 +43,11 @@ namespace IRF_Projekt_UF27ER.Entities
                     AruButton aruButton = new AruButton(sor);
                     aruButton.Marka = sor.Marka;       
                     aruButton.Location = new Point(x, y);
+                    aruButton_lista.Add(aruButton);
                     Controls.Add(aruButton);
                     x = x + 181;
                 }
             }       
-
-
-
         }
     }
 }

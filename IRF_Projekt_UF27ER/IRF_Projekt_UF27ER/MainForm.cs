@@ -62,6 +62,7 @@ namespace IRF_Projekt_UF27ER
                 KatUserControl ujKUC = new KatUserControl(keszlet_lista);
                 ujKUC.UCK_kat = osszesKat[i];
                 ujKUC.Location = new Point(x, y);
+                KUC_lista.Add(ujKUC);
                 Controls.Add(ujKUC);
                 y = y + 125;
             }

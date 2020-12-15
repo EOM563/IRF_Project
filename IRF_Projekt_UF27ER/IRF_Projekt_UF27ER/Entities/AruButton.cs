@@ -68,19 +68,23 @@ namespace IRF_Projekt_UF27ER.Entities
                     FlatStyle = FlatStyle.Flat;
                     FlatAppearance.BorderColor = Color.Black;
                     FlatAppearance.BorderSize = 2;
+                    aktualisAru.Kiirasra = true;
                 }
                 else
                 {
                     NormalFormazas();
+                    aktualisAru.Kiirasra = false;
                 }
             }
         }
+        Aru aktualisAru;
         public AruButton(Aru forrasAru)
         {
             Height = 38;
             Width = 175;
             Text = forrasAru.Marka + Environment.NewLine + forrasAru.Termek_nev;
 
+            aktualisAru = forrasAru;
             NormalFormazas();
             MouseDown += KatButton_MouseDown;
         }

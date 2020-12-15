@@ -44,7 +44,6 @@ namespace IRF_Projekt_UF27ER.Entities
                 }
             } 
         }        
-
         public bool katActive
         {
             get { return _katActive; }
@@ -58,15 +57,29 @@ namespace IRF_Projekt_UF27ER.Entities
                     FlatAppearance.BorderColor = Color.Black;
                     FlatAppearance.BorderSize = 2;
                     BackColor = SystemColors.ControlDark;
+
+                    for (int i = 0; i < aruButton_lista.Count; i++)
+                    {
+                        aruButton_lista[i].AruActive = true;
+                        aruButton_lista[i].Enabled = false;
+                    }
                 }
                 else
                 {
                     NormalFormazas();
+                    for (int i = 0; i < aruButton_lista.Count; i++)
+                    {
+                        aruButton_lista[i].AruActive = false;
+                        aruButton_lista[i].Enabled = true;
+                    }
                 }
             }
         }
-        public KatButton(List<Aru> keszlet_lista)
+
+        List<AruButton> aruButton_lista;
+        public KatButton(List<Aru> keszlet_lista, List<AruButton> aruButton_lista)
         {
+            this.aruButton_lista = aruButton_lista;
             Height = 100;
             Width = 130;
             Text = Kat;
