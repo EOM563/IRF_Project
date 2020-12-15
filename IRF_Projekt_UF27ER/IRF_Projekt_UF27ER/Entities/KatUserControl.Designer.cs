@@ -32,7 +32,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.alKatButton1 = new IRF_Projekt_UF27ER.Entities.AlKatButton();
-            this.katButton1 = new IRF_Projekt_UF27ER.Entities.KatButton();
+            this.katButton = new IRF_Projekt_UF27ER.Entities.KatButton();
             this.SuspendLayout();
             // 
             // label3
@@ -66,36 +66,33 @@
             // 
             this.alKatButton1.AlKat = null;
             this.alKatButton1.AlKatActive = false;
-            this.alKatButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(239)))), ((int)(((byte)(139)))));
+            this.alKatButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(211)))), ((int)(((byte)(199)))));
             this.alKatButton1.FlatAppearance.BorderColor = System.Drawing.SystemColors.AppWorkspace;
-            this.alKatButton1.FlatAppearance.BorderSize = 2;
             this.alKatButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.alKatButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
-            this.alKatButton1.HatterSzin = "126,239,139";
-            this.alKatButton1.Location = new System.Drawing.Point(140, 3);
+            this.alKatButton1.Kat = null;
+            this.alKatButton1.Location = new System.Drawing.Point(139, 3);
             this.alKatButton1.Name = "alKatButton1";
             this.alKatButton1.Size = new System.Drawing.Size(175, 35);
-            this.alKatButton1.TabIndex = 11;
+            this.alKatButton1.TabIndex = 13;
             this.alKatButton1.Text = "alKatButton1";
             this.alKatButton1.UseVisualStyleBackColor = true;
             // 
-            // katButton1
+            // katButton
             // 
-            this.katButton1.BackColor = System.Drawing.SystemColors.Control;
-            this.katButton1.BetuSzin = "0,46,115";
-            this.katButton1.FlatAppearance.BorderColor = System.Drawing.SystemColors.AppWorkspace;
-            this.katButton1.FlatAppearance.BorderSize = 2;
-            this.katButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.katButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.katButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(133)))), ((int)(((byte)(50)))));
-            this.katButton1.Kat = null;
-            this.katButton1.katActive = false;
-            this.katButton1.Location = new System.Drawing.Point(3, 3);
-            this.katButton1.Name = "katButton1";
-            this.katButton1.Size = new System.Drawing.Size(130, 100);
-            this.katButton1.TabIndex = 10;
-            this.katButton1.Text = "katButton1";
-            this.katButton1.UseVisualStyleBackColor = false;
+            this.katButton.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.katButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.AppWorkspace;
+            this.katButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.katButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.katButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(64)))), ((int)(((byte)(128)))));
+            this.katButton.Kat = null;
+            this.katButton.katActive = false;
+            this.katButton.Location = new System.Drawing.Point(3, 3);
+            this.katButton.Name = "katButton";
+            this.katButton.Size = new System.Drawing.Size(130, 100);
+            this.katButton.TabIndex = 12;
+            this.katButton.Text = "katButton";
+            this.katButton.UseVisualStyleBackColor = false;
             // 
             // KatUserControl
             // 
@@ -104,7 +101,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.alKatButton1);
-            this.Controls.Add(this.katButton1);
+            this.Controls.Add(this.katButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -121,7 +118,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private KatButton katButton1;
+        private KatButton katButton;
         private AlKatButton alKatButton1;
     }
 }

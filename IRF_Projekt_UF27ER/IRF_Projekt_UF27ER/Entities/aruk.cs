@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IRF_Projekt_UF27ER.Entities
 {
-    class aruk
+    public class aruk
     {
         public int ID { get; set; }
         public string Termek { get; set; }

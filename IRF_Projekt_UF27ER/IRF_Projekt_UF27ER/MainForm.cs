@@ -58,7 +58,7 @@ namespace IRF_Projekt_UF27ER
             int y = 8;
             for (int i = 0; i < osszesKat.Count(); i++)
             {                
-                KatUserControl ujKUC = new KatUserControl();
+                KatUserControl ujKUC = new KatUserControl(keszlet_lista);
                 ujKUC.UCKKat = osszesKat[i];
                 ujKUC.PosX = x;
                 ujKUC.PosY = y;
