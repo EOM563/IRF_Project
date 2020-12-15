@@ -9,5 +9,6 @@ namespace IRF_Projekt_UF27ER.Entities
 {
     class AlKatButton : Button
     {
+        string asd;
     }
 }

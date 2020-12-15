@@ -31,11 +31,7 @@
             this.buttonFormNelkul = new System.Windows.Forms.Button();
             this.buttonFormazott = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.katUserControl1 = new IRF_Projekt_UF27ER.Entities.KatUserControl();
             this.SuspendLayout();
             // 
             // buttonFormNelkul
@@ -65,61 +61,19 @@
             this.buttonExit.Text = "Kilépés";
             this.buttonExit.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // katUserControl1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 8);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 100);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(149, 8);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 35);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(150, 50);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "label1";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(150, 70);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "label1";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(150, 90);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "label1";
+            this.katUserControl1.Location = new System.Drawing.Point(12, 8);
+            this.katUserControl1.Name = "katUserControl1";
+            this.katUserControl1.Size = new System.Drawing.Size(857, 105);
+            this.katUserControl1.TabIndex = 1;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1062, 618);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.katUserControl1);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonFormazott);
             this.Controls.Add(this.buttonFormNelkul);
@@ -127,7 +81,6 @@
             this.Text = "Árukészlet";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -136,11 +89,7 @@
         private System.Windows.Forms.Button buttonFormNelkul;
         private System.Windows.Forms.Button buttonFormazott;
         private System.Windows.Forms.Button buttonExit;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private Entities.KatUserControl katUserControl1;
     }
 }
 
