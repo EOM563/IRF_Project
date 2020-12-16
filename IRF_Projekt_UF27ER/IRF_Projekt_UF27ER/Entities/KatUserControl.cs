@@ -18,9 +18,11 @@ namespace IRF_Projekt_UF27ER.Entities
         List<AruButton> aruButton_lista = new List<AruButton>();
         List<Aru> keszlet_lista;
 
+        //button alap koordináták
         private int b_x = 139;
         private int b_y = 3;
 
+        //label alap koordináták
         private int l_x = 141;
         private int l_y = 46;
 

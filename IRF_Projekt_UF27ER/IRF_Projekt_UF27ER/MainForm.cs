@@ -22,10 +22,12 @@ namespace IRF_Projekt_UF27ER
         List<KatUserControl> KUC_lista = new List<KatUserControl>();
 
         //Excel
-        Excel.Application excelApp; // A Microsoft Excel alkalmazás
-        Excel.Workbook excelWorkbooks; // A létrehozott munkafüzet
-        Excel.Worksheet excelActiveSheet; // Munkalap a munkafüzeten belül
+        Excel.Application excelApp; 
+        Excel.Workbook excelWorkbooks; 
+        Excel.Worksheet excelActiveSheet;
 
+        string[] fejlec_lista;
+        object[,] keszlet_sorok;
 
         public MainForm()
         {
@@ -90,10 +92,7 @@ namespace IRF_Projekt_UF27ER
                 excelWorkbooks = excelApp.Workbooks.Add(Missing.Value);
                 excelActiveSheet = excelWorkbooks.ActiveSheet;
 
-                TablaLetrehozas(); 
-
-                excelApp.Visible = true;
-                excelApp.UserControl = true;
+                TablaLetrehozas();               
             }
             catch (Exception ex)
             {
@@ -105,10 +104,7 @@ namespace IRF_Projekt_UF27ER
                 excelWorkbooks = null;
                 excelApp = null;
             }
-        }
-
-        string[] fejlec_lista;
-        object[,] keszlet_sorok;
+        }        
 
         private void TablaLetrehozas()
         {
@@ -130,17 +126,17 @@ namespace IRF_Projekt_UF27ER
                 excelActiveSheet.Cells[1, (i + 1)] = fejlec_lista[i];
             }
 
-            int ksHossz = 0;
-
+            //kiírandó sorok száma
+            int kiSorDb = 0;
             foreach (Aru v in keszlet_lista)
             {
                 if (v.Kiirasra == true)
                 {
-                    ksHossz++;
+                    kiSorDb++;
                 }
             }
 
-            keszlet_sorok = new object[ksHossz, fejlec_lista.Length];
+            keszlet_sorok = new object[kiSorDb, fejlec_lista.Length];
 
             int szamlalo = 0;
             foreach (Aru sor in keszlet_lista)
@@ -178,6 +174,7 @@ namespace IRF_Projekt_UF27ER
             }
             excelActiveSheet.get_Range(GetCell(2, 1), GetCell(1 + keszlet_sorok.GetLength(0), keszlet_sorok.GetLength(1))).Value2 = keszlet_sorok;
         }
+
         private void TablaFormazas()
         {
             Excel.Range fejlec = excelActiveSheet.get_Range(GetCell(1, 1), GetCell(1, fejlec_lista.Length));
@@ -230,12 +227,16 @@ namespace IRF_Projekt_UF27ER
         private void buttonFormNelkul_Click(object sender, EventArgs e)
         {
             CreateExcel();
+            excelApp.Visible = true;
+            excelApp.UserControl = true;
         }
 
         private void buttonFormazott_Click(object sender, EventArgs e)
         {
             CreateExcel();
             TablaFormazas();
+            excelApp.Visible = true;
+            excelApp.UserControl = true;
         }
 
         private void buttonExit_Click(object sender, EventArgs e)

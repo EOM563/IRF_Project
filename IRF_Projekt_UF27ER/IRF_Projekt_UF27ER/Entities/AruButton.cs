@@ -11,7 +11,6 @@ namespace IRF_Projekt_UF27ER.Entities
 {
     public class AruButton : Button
     {
-        //private string _hatterSzin;
         private string _marka;
         private bool _aruActive;
         public string Marka 
@@ -77,6 +76,7 @@ namespace IRF_Projekt_UF27ER.Entities
                 }
             }
         }
+
         Aru aktualisAru;
         public AruButton(Aru forrasAru)
         {
@@ -108,54 +108,5 @@ namespace IRF_Projekt_UF27ER.Entities
             FlatAppearance.BorderColor = SystemColors.AppWorkspace;
             FlatAppearance.BorderSize = 1;
         }
-
-        /*
-        public string HatterSzin
-        {
-            get { return _hatterSzin; }
-            set
-            {
-                if (value == "Milka")
-                {
-                    ForeColor = Color.FromArgb(255,255,255);
-                    BackColor = Color.FromArgb(104,79,163);
-                    _hatterSzin = "104,79,163";
-                }
-                else if (value == "Boci")
-                {
-                    ForeColor = Color.FromArgb(255, 255, 255);
-                    BackColor = Color.FromArgb(0, 204, 0);
-                    _hatterSzin = "0, 204, 0";
-                }
-                else if (value == "Tibi")
-                {
-                    ForeColor = Color.FromArgb(255, 255, 255);
-                    BackColor = Color.FromArgb(51, 51, 255);
-                    _hatterSzin = "51,51,255";
-                }
-                else if (value == "Valdor")
-                {
-                    ForeColor = Color.FromArgb(255, 255, 255);
-                    BackColor = Color.FromArgb(153, 0, 76);
-                    _hatterSzin = "153, 0, 76";
-                }
-                else if (value == "Pote")
-                {
-                    ForeColor = Color.FromArgb(255, 255, 255);
-                    BackColor = Color.FromArgb(104, 79, 163);
-                    _hatterSzin = "104,79,163";
-                }
-                else
-                {
-                    Random ran = new Random();
-                    int r = ran.Next(100, 255);
-                    int g = ran.Next(100, 255);
-                    int b = ran.Next(100, 255);
-                    BackColor = Color.FromArgb(r, g, b);
-                    _hatterSzin = r.ToString() + "," + g.ToString() + "," + b.ToString();
-                }
-            }
-        }
-        */
     }
 }
