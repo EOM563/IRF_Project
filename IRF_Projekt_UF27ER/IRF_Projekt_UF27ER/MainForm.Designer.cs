@@ -42,6 +42,7 @@
             this.buttonFormNelkul.TabIndex = 0;
             this.buttonFormNelkul.Text = "Kiírás formázás nélkül";
             this.buttonFormNelkul.UseVisualStyleBackColor = true;
+            this.buttonFormNelkul.Click += new System.EventHandler(this.buttonFormNelkul_Click);
             // 
             // buttonFormazott
             // 
@@ -52,6 +53,7 @@
             this.buttonFormazott.TabIndex = 0;
             this.buttonFormazott.Text = "Kiírás formázással";
             this.buttonFormazott.UseVisualStyleBackColor = true;
+            this.buttonFormazott.Click += new System.EventHandler(this.buttonFormazott_Click);
             // 
             // buttonExit
             // 
@@ -62,6 +64,7 @@
             this.buttonExit.TabIndex = 0;
             this.buttonExit.Text = "Kilépés";
             this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
             // MainForm
             // 

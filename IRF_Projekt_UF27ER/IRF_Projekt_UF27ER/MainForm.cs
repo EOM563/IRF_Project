@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using IRF_Projekt_UF27ER.Entities;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Reflection;
 
 namespace IRF_Projekt_UF27ER
 {
@@ -18,6 +20,12 @@ namespace IRF_Projekt_UF27ER
         List<string> osszesKat = new List<string>();
 
         List<KatUserControl> KUC_lista = new List<KatUserControl>();
+
+        //Excel
+        Excel.Application excelApp; // A Microsoft Excel alkalmazás
+        Excel.Workbook excelWorkbooks; // A létrehozott munkafüzet
+        Excel.Worksheet excelActiveSheet; // Munkalap a munkafüzeten belül
+
 
         public MainForm()
         {
@@ -72,6 +80,167 @@ namespace IRF_Projekt_UF27ER
         private void MainForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void CreateExcel()
+        {
+            try
+            {
+                excelApp = new Excel.Application();
+                excelWorkbooks = excelApp.Workbooks.Add(Missing.Value);
+                excelActiveSheet = excelWorkbooks.ActiveSheet;
+
+                TablaLetrehozas(); 
+
+                excelApp.Visible = true;
+                excelApp.UserControl = true;
+            }
+            catch (Exception ex)
+            {
+                string error = string.Format("Error: " + ex.Message + "\n" + "Line:" + ex.Source);
+                MessageBox.Show(error, "Error");
+
+                excelWorkbooks.Close(false, Type.Missing, Type.Missing);
+                excelApp.Quit();
+                excelWorkbooks = null;
+                excelApp = null;
+            }
+        }
+
+        string[] fejlec_lista;
+        object[,] keszlet_sorok;
+
+        private void TablaLetrehozas()
+        {
+            fejlec_lista = new string[]
+            {
+                 "ID",
+                 "Termék",
+                 "Készlet (db)",
+                 "Egységár (Ft)",
+                 "Kategória",
+                 "Márka",
+                 "Megnevezés",
+                 "Készlet érték (Ft)",
+                 "Elérhetőség"
+            };
+
+            for (int i = 0; i < fejlec_lista.Length; i++)
+            {
+                excelActiveSheet.Cells[1, (i + 1)] = fejlec_lista[i];
+            }
+
+            int ksHossz = 0;
+
+            foreach (Aru v in keszlet_lista)
+            {
+                if (v.Kiirasra == true)
+                {
+                    ksHossz++;
+                }
+            }
+
+            keszlet_sorok = new object[ksHossz, fejlec_lista.Length];
+
+            int szamlalo = 0;
+            foreach (Aru sor in keszlet_lista)
+            {
+                if (sor.Kiirasra == true)
+                {
+                    keszlet_sorok[szamlalo, 0] = sor.ID;
+                    keszlet_sorok[szamlalo, 1] = sor.Termek;
+                    keszlet_sorok[szamlalo, 2] = sor.Keszlet_db;
+                    keszlet_sorok[szamlalo, 3] = sor.Egysegar_ft;
+                    keszlet_sorok[szamlalo, 4] = sor.Kategoria;
+                    keszlet_sorok[szamlalo, 5] = sor.Marka;
+                    keszlet_sorok[szamlalo, 6] = sor.Termek_nev;
+                    keszlet_sorok[szamlalo, 7] = sor.KeszletErtek;
+
+                    if (sor.Keszlet_db <= 20)
+                    {
+                        keszlet_sorok[szamlalo, 8] = "Alacsony készlet, rendelni kell";
+                    }
+                    else if (sor.Keszlet_db > 20 && sor.Keszlet_db < 60)
+                    {
+                        keszlet_sorok[szamlalo, 8] = "Alacsony készlet";
+                    }
+                    else if (sor.Keszlet_db > 60)
+                    {
+                        keszlet_sorok[szamlalo, 8] = "Készleten";
+                    }
+                    else
+                    {
+                        keszlet_sorok[szamlalo, 8] = "Nincs készleten, rendelni kell";
+                    }
+
+                    szamlalo++;
+                }                               
+            }
+            excelActiveSheet.get_Range(GetCell(2, 1), GetCell(1 + keszlet_sorok.GetLength(0), keszlet_sorok.GetLength(1))).Value2 = keszlet_sorok;
+        }
+        private void TablaFormazas()
+        {
+            Excel.Range fejlec = excelActiveSheet.get_Range(GetCell(1, 1), GetCell(1, fejlec_lista.Length));
+            Excel.Range tabla = excelActiveSheet.get_Range(GetCell(1, 1), GetCell(1 + keszlet_sorok.GetLength(0), keszlet_sorok.GetLength(1)));
+            Excel.Range idOszlop = excelActiveSheet.get_Range(GetCell(2, 1), GetCell(1 + keszlet_sorok.GetLength(0), 1));
+            Excel.Range keszletErt = excelActiveSheet.get_Range(GetCell(2, keszlet_sorok.GetLength(1)-1), GetCell(1 + keszlet_sorok.GetLength(0), keszlet_sorok.GetLength(1)-1));
+            Excel.Range termekOszlop = excelActiveSheet.get_Range(GetCell(2, 2), GetCell(1 + keszlet_sorok.GetLength(0), 1));
+
+            //Borderek
+            fejlec.Cells.Borders.Weight = Excel.XlBorderWeight.xlThin;
+            tabla.Cells.Borders.Weight = Excel.XlBorderWeight.xlThin;
+            tabla.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
+
+            //Cella formazas
+            fejlec.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+            fejlec.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+            
+            fejlec.RowHeight = 20;
+            fejlec.Font.Size = 14;
+            fejlec.Font.Bold = true;
+            idOszlop.Font.Bold = true;
+            termekOszlop.Font.Italic = true;
+
+            fejlec.Interior.Color = Color.LightGray;
+            idOszlop.Interior.Color = Color.LightSlateGray;
+            keszletErt.Interior.Color = Color.LightGreen;
+
+            keszletErt.NumberFormat = "#\\ ##0";
+            
+            fejlec.EntireColumn.AutoFit();
+        }
+
+        private string GetCell(int x, int y)
+        {
+            string ExcelCoordinate = "";
+            int dividend = y;
+            int modulo;
+
+            while (dividend > 0)
+            {
+                modulo = (dividend - 1) % 26;
+                ExcelCoordinate = Convert.ToChar(65 + modulo).ToString() + ExcelCoordinate;
+                dividend = (int)((dividend - modulo) / 26);
+            }
+            ExcelCoordinate += x.ToString();
+
+            return ExcelCoordinate;
+        }
+
+        private void buttonFormNelkul_Click(object sender, EventArgs e)
+        {
+            CreateExcel();
+        }
+
+        private void buttonFormazott_Click(object sender, EventArgs e)
+        {
+            CreateExcel();
+            TablaFormazas();
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
