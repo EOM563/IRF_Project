@@ -29,12 +29,12 @@ namespace IRF_Projekt_UF27ER.Entities
                 else if (value == "Boci")
                 {
                     ForeColor = Color.FromArgb(255, 255, 255);
-                    BackColor = Color.FromArgb(0, 204, 0);
+                    BackColor = Color.Green;
                 }
                 else if (value == "Tibi")
                 {
                     ForeColor = Color.FromArgb(255, 255, 255);
-                    BackColor = Color.FromArgb(51, 51, 255);
+                    BackColor = Color.DarkBlue;
                 }
                 else if (value == "Valdor")
                 {

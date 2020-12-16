@@ -80,7 +80,7 @@ namespace IRF_Projekt_UF27ER.Entities
         public KatButton(List<Aru> keszlet_lista, List<AruButton> aruButton_lista)
         {
             this.aruButton_lista = aruButton_lista;
-            Height = 100;
+            Height = 120;
             Width = 130;
             Text = Kat;
             Location = new Point(3, 3);

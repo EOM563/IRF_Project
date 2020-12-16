@@ -16,5 +16,6 @@ namespace IRF_Projekt_UF27ER.Entities
         public string Marka { get; set; }
         public string Termek_nev { get; set; }
         public bool Kiirasra { get; set; }
+        public int KeszletErtek { get; set; }
     }
 }

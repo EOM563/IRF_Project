@@ -44,6 +44,7 @@ namespace IRF_Projekt_UF27ER
                 keszlet_sor.Marka = i.Marka.ToString();
                 keszlet_sor.Termek_nev = i.Termek_nev.ToString();
                 keszlet_sor.Kiirasra = false;
+                keszlet_sor.KeszletErtek = keszlet_sor.Egysegar_ft * keszlet_sor.Keszlet_db;
                 keszlet_lista.Add(keszlet_sor);
 
                 if (osszesKat.Contains(i.Kategoria.ToString()) == false)
@@ -64,7 +65,7 @@ namespace IRF_Projekt_UF27ER
                 ujKUC.Location = new Point(x, y);
                 KUC_lista.Add(ujKUC);
                 Controls.Add(ujKUC);
-                y = y + 125;
+                y = y + 150;
             }
         }
 

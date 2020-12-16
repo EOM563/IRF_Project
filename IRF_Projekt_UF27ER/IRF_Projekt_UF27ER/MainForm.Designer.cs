@@ -35,6 +35,7 @@
             // 
             // buttonFormNelkul
             // 
+            this.buttonFormNelkul.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonFormNelkul.Location = new System.Drawing.Point(875, 8);
             this.buttonFormNelkul.Name = "buttonFormNelkul";
             this.buttonFormNelkul.Size = new System.Drawing.Size(175, 45);
@@ -44,6 +45,7 @@
             // 
             // buttonFormazott
             // 
+            this.buttonFormazott.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonFormazott.Location = new System.Drawing.Point(875, 63);
             this.buttonFormazott.Name = "buttonFormazott";
             this.buttonFormazott.Size = new System.Drawing.Size(175, 45);
@@ -53,6 +55,7 @@
             // 
             // buttonExit
             // 
+            this.buttonExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonExit.Location = new System.Drawing.Point(875, 561);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(175, 45);
@@ -64,10 +67,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1062, 618);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonFormazott);
             this.Controls.Add(this.buttonFormNelkul);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Árukészlet";
             this.Load += new System.EventHandler(this.MainForm_Load);
