@@ -31,15 +31,15 @@
             this.buttonFormNelkul = new System.Windows.Forms.Button();
             this.buttonFormazott = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
-            this.saveButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonFormNelkul
             // 
             this.buttonFormNelkul.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonFormNelkul.Location = new System.Drawing.Point(875, 8);
+            this.buttonFormNelkul.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonFormNelkul.Location = new System.Drawing.Point(875, 12);
             this.buttonFormNelkul.Name = "buttonFormNelkul";
-            this.buttonFormNelkul.Size = new System.Drawing.Size(175, 45);
+            this.buttonFormNelkul.Size = new System.Drawing.Size(175, 65);
             this.buttonFormNelkul.TabIndex = 0;
             this.buttonFormNelkul.Text = "Excel megjeleneítése\r\nformázás nélkül";
             this.buttonFormNelkul.UseVisualStyleBackColor = true;
@@ -48,9 +48,10 @@
             // buttonFormazott
             // 
             this.buttonFormazott.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonFormazott.Location = new System.Drawing.Point(875, 63);
+            this.buttonFormazott.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonFormazott.Location = new System.Drawing.Point(875, 88);
             this.buttonFormazott.Name = "buttonFormazott";
-            this.buttonFormazott.Size = new System.Drawing.Size(175, 45);
+            this.buttonFormazott.Size = new System.Drawing.Size(175, 65);
             this.buttonFormazott.TabIndex = 0;
             this.buttonFormazott.Text = "Excel megjeleneítése\r\nformázással\r\n";
             this.buttonFormazott.UseVisualStyleBackColor = true;
@@ -59,6 +60,7 @@
             // buttonExit
             // 
             this.buttonExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonExit.Location = new System.Drawing.Point(875, 404);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(175, 45);
@@ -67,30 +69,19 @@
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
-            // saveButton
-            // 
-            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveButton.Location = new System.Drawing.Point(875, 114);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(175, 45);
-            this.saveButton.TabIndex = 1;
-            this.saveButton.Text = "Formázott excel mentése";
-            this.saveButton.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1062, 461);
-            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonFormazott);
             this.Controls.Add(this.buttonFormNelkul);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "Árukészlet";
+            this.Text = "Árukészlet listázás";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
 
@@ -101,7 +92,6 @@
         private System.Windows.Forms.Button buttonFormNelkul;
         private System.Windows.Forms.Button buttonFormazott;
         private System.Windows.Forms.Button buttonExit;
-        private System.Windows.Forms.Button saveButton;
     }
 }
 

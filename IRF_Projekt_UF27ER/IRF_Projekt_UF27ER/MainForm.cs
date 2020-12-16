@@ -16,7 +16,7 @@ namespace IRF_Projekt_UF27ER
     public partial class MainForm : Form
     {
         bolt_dataEntities context = new bolt_dataEntities();       
-        List<Aru> keszlet_lista = new List<Aru>();
+        List<Aru> aru_lista = new List<Aru>();
         List<string> osszesKat = new List<string>();
 
         List<KatUserControl> KUC_lista = new List<KatUserControl>();
@@ -27,7 +27,7 @@ namespace IRF_Projekt_UF27ER
         Excel.Worksheet excelActiveSheet;
 
         string[] fejlec_lista;
-        object[,] keszlet_sorok;
+        object[,] keszlet_matrix;
 
         public MainForm()
         {
@@ -55,7 +55,7 @@ namespace IRF_Projekt_UF27ER
                 keszlet_sor.Termek_nev = i.Termek_nev.ToString();
                 keszlet_sor.Kiirasra = false;
                 keszlet_sor.KeszletErtek = keszlet_sor.Egysegar_ft * keszlet_sor.Keszlet_db;
-                keszlet_lista.Add(keszlet_sor);
+                aru_lista.Add(keszlet_sor);
 
                 if (osszesKat.Contains(i.Kategoria.ToString()) == false)
                 {
@@ -64,13 +64,14 @@ namespace IRF_Projekt_UF27ER
             }
         }
 
+        //Dinamikus kategória szerinti UserControl generálás
         private void KUCgeneralas()
         {
             int x = 12;
             int y = 8;
             for (int i = 0; i < osszesKat.Count(); i++)
             {                
-                KatUserControl ujKUC = new KatUserControl(keszlet_lista);
+                KatUserControl ujKUC = new KatUserControl(aru_lista);
                 ujKUC.UCK_kat = osszesKat[i];
                 ujKUC.Location = new Point(x, y);
                 KUC_lista.Add(ujKUC);
@@ -84,7 +85,7 @@ namespace IRF_Projekt_UF27ER
 
         }
 
-        private void CreateExcel()
+        private void ExcelLetrehozas()
         {
             try
             {
@@ -108,6 +109,7 @@ namespace IRF_Projekt_UF27ER
 
         private void TablaLetrehozas()
         {
+            //fejléc generálás
             fejlec_lista = new string[]
             {
                  "ID",
@@ -120,7 +122,7 @@ namespace IRF_Projekt_UF27ER
                  "Készlet érték (Ft)",
                  "Elérhetőség"
             };
-
+            
             for (int i = 0; i < fejlec_lista.Length; i++)
             {
                 excelActiveSheet.Cells[1, (i + 1)] = fejlec_lista[i];
@@ -128,7 +130,7 @@ namespace IRF_Projekt_UF27ER
 
             //kiírandó sorok száma
             int kiSorDb = 0;
-            foreach (Aru v in keszlet_lista)
+            foreach (Aru v in aru_lista)
             {
                 if (v.Kiirasra == true)
                 {
@@ -136,52 +138,52 @@ namespace IRF_Projekt_UF27ER
                 }
             }
 
-            keszlet_sorok = new object[kiSorDb, fejlec_lista.Length];
+            keszlet_matrix = new object[kiSorDb, fejlec_lista.Length];
 
             int szamlalo = 0;
-            foreach (Aru sor in keszlet_lista)
+            foreach (Aru sor in aru_lista)
             {
                 if (sor.Kiirasra == true)
                 {
-                    keszlet_sorok[szamlalo, 0] = sor.ID;
-                    keszlet_sorok[szamlalo, 1] = sor.Termek;
-                    keszlet_sorok[szamlalo, 2] = sor.Keszlet_db;
-                    keszlet_sorok[szamlalo, 3] = sor.Egysegar_ft;
-                    keszlet_sorok[szamlalo, 4] = sor.Kategoria;
-                    keszlet_sorok[szamlalo, 5] = sor.Marka;
-                    keszlet_sorok[szamlalo, 6] = sor.Termek_nev;
-                    keszlet_sorok[szamlalo, 7] = sor.KeszletErtek;
+                    keszlet_matrix[szamlalo, 0] = sor.ID;
+                    keszlet_matrix[szamlalo, 1] = sor.Termek;
+                    keszlet_matrix[szamlalo, 2] = sor.Keszlet_db;
+                    keszlet_matrix[szamlalo, 3] = sor.Egysegar_ft;
+                    keszlet_matrix[szamlalo, 4] = sor.Kategoria;
+                    keszlet_matrix[szamlalo, 5] = sor.Marka;
+                    keszlet_matrix[szamlalo, 6] = sor.Termek_nev;
+                    keszlet_matrix[szamlalo, 7] = sor.KeszletErtek;
 
                     if (sor.Keszlet_db <= 20)
                     {
-                        keszlet_sorok[szamlalo, 8] = "Alacsony készlet, rendelni kell";
+                        keszlet_matrix[szamlalo, 8] = "Alacsony készlet, rendelni kell";
                     }
                     else if (sor.Keszlet_db > 20 && sor.Keszlet_db < 60)
                     {
-                        keszlet_sorok[szamlalo, 8] = "Alacsony készlet";
+                        keszlet_matrix[szamlalo, 8] = "Alacsony készlet";
                     }
                     else if (sor.Keszlet_db > 60)
                     {
-                        keszlet_sorok[szamlalo, 8] = "Készleten";
+                        keszlet_matrix[szamlalo, 8] = "Készleten";
                     }
                     else
                     {
-                        keszlet_sorok[szamlalo, 8] = "Nincs készleten, rendelni kell";
+                        keszlet_matrix[szamlalo, 8] = "Nincs készleten, rendelni kell";
                     }
 
                     szamlalo++;
                 }                               
             }
-            excelActiveSheet.get_Range(GetCell(2, 1), GetCell(1 + keszlet_sorok.GetLength(0), keszlet_sorok.GetLength(1))).Value2 = keszlet_sorok;
+            excelActiveSheet.get_Range(GetCell(2, 1), GetCell(1 + keszlet_matrix.GetLength(0), keszlet_matrix.GetLength(1))).Value2 = keszlet_matrix;
         }
 
         private void TablaFormazas()
         {
             Excel.Range fejlec = excelActiveSheet.get_Range(GetCell(1, 1), GetCell(1, fejlec_lista.Length));
-            Excel.Range tabla = excelActiveSheet.get_Range(GetCell(1, 1), GetCell(1 + keszlet_sorok.GetLength(0), keszlet_sorok.GetLength(1)));
-            Excel.Range idOszlop = excelActiveSheet.get_Range(GetCell(2, 1), GetCell(1 + keszlet_sorok.GetLength(0), 1));
-            Excel.Range keszletErt = excelActiveSheet.get_Range(GetCell(2, keszlet_sorok.GetLength(1)-1), GetCell(1 + keszlet_sorok.GetLength(0), keszlet_sorok.GetLength(1)-1));
-            Excel.Range termekOszlop = excelActiveSheet.get_Range(GetCell(2, 2), GetCell(1 + keszlet_sorok.GetLength(0), 1));
+            Excel.Range tabla = excelActiveSheet.get_Range(GetCell(1, 1), GetCell(1 + keszlet_matrix.GetLength(0), keszlet_matrix.GetLength(1)));
+            Excel.Range idOszlop = excelActiveSheet.get_Range(GetCell(2, 1), GetCell(1 + keszlet_matrix.GetLength(0), 1));
+            Excel.Range keszletErt = excelActiveSheet.get_Range(GetCell(2, keszlet_matrix.GetLength(1)-1), GetCell(1 + keszlet_matrix.GetLength(0), keszlet_matrix.GetLength(1)-1));
+            Excel.Range termekOszlop = excelActiveSheet.get_Range(GetCell(2, 2), GetCell(1 + keszlet_matrix.GetLength(0), 1));
 
             //Borderek
             fejlec.Cells.Borders.Weight = Excel.XlBorderWeight.xlThin;
@@ -226,14 +228,14 @@ namespace IRF_Projekt_UF27ER
 
         private void buttonFormNelkul_Click(object sender, EventArgs e)
         {
-            CreateExcel();
+            ExcelLetrehozas();
             excelApp.Visible = true;
             excelApp.UserControl = true;
         }
 
         private void buttonFormazott_Click(object sender, EventArgs e)
         {
-            CreateExcel();
+            ExcelLetrehozas();
             TablaFormazas();
             excelApp.Visible = true;
             excelApp.UserControl = true;

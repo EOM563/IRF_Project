@@ -13,6 +13,9 @@ namespace IRF_Projekt_UF27ER.Entities
     {
         private bool _katActive = false;
         private string _kat;
+        List<AruButton> aruButton_lista;
+
+        //Kategória
         public string Kat 
         { 
             get { return _kat; }
@@ -21,6 +24,7 @@ namespace IRF_Projekt_UF27ER.Entities
                 _kat = value;
                 Text = _kat;
 
+                //szín állítás kat alapján
                 if (value == "Csokoládé")
                 {
                     ForeColor = Color.FromArgb(51, 25, 0);
@@ -43,6 +47,8 @@ namespace IRF_Projekt_UF27ER.Entities
                 }
             } 
         }        
+
+        //button aktivitás vizsgálat
         public bool katActive
         {
             get { return _katActive; }
@@ -75,10 +81,10 @@ namespace IRF_Projekt_UF27ER.Entities
             }
         }
 
-        List<AruButton> aruButton_lista;
-        public KatButton(List<Aru> keszlet_lista, List<AruButton> aruButton_lista)
+        public KatButton(List<AruButton> aruButton_lista)
         {
             this.aruButton_lista = aruButton_lista;
+
             Height = 120;
             Width = 130;
             Text = Kat;

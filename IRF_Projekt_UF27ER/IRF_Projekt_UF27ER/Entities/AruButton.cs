@@ -13,6 +13,8 @@ namespace IRF_Projekt_UF27ER.Entities
     {
         private string _marka;
         private bool _aruActive;
+
+        //Márka
         public string Marka 
         {
             get { return _marka; }
@@ -20,6 +22,7 @@ namespace IRF_Projekt_UF27ER.Entities
             {
                 _marka = value;
 
+                //szín állítás márka alapján
                 if (value == "Milka")
                 {
                     ForeColor = Color.FromArgb(255, 255, 255);

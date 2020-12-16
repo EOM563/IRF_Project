@@ -16,7 +16,7 @@ namespace IRF_Projekt_UF27ER.Entities
         public string UCK_kat { get; set; }
 
         List<AruButton> aruButton_lista = new List<AruButton>();
-        List<Aru> keszlet_lista;
+        List<Aru> aru_lista;
 
         //button alap koordináták
         private int b_x = 139;
@@ -30,19 +30,19 @@ namespace IRF_Projekt_UF27ER.Entities
         {
             InitializeComponent();
 
-            this.keszlet_lista = keszlet_lista;
+            this.aru_lista = keszlet_lista;
         }
 
         private void KatUserControl_Load(object sender, EventArgs e)
         {                      
             //Kategróia button
-            KatButton katButton = new KatButton(keszlet_lista, aruButton_lista);
+            KatButton katButton = new KatButton(aruButton_lista);
             katButton.Kat = UCK_kat;
             Controls.Add(katButton);
 
             //Termék button és data label generálás
 
-            foreach (Aru sor in keszlet_lista)
+            foreach (Aru sor in aru_lista)
             {
                 if (sor.Kategoria == UCK_kat)
                 {
@@ -70,6 +70,7 @@ namespace IRF_Projekt_UF27ER.Entities
 
         private void LabelGeneralas(Aru sor, Label keszletErtek, Label keszletDb, Label egysegAr, Label rendeles)
         {
+            //keszlet labelek
             if (sor.Keszlet_db == 0)
             {
                 keszletErtek.Text = "Készlet érték: 0 Ft";
@@ -85,9 +86,11 @@ namespace IRF_Projekt_UF27ER.Entities
                 pozAdd(l_x, l_y, keszletDb);
             }
 
+            //egységár label
             egysegAr.Text = "Egységár: " + (sor.Egysegar_ft).ToString() + " Ft";
             pozAdd(l_x, l_y, egysegAr);
 
+            //rendelés label
             if (sor.Keszlet_db <= 20)
             {
                 rendeles.Text = "Alacsony készlet, rendelni kell";
@@ -114,6 +117,8 @@ namespace IRF_Projekt_UF27ER.Entities
             }
         }
 
+
+        //label pozíció állítás és felhelyezés
         private void pozAdd(int x, int y, Label dataLabel)
         {
             dataLabel.Location = new Point(x, y);
